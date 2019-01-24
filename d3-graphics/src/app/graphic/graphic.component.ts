@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as d3 from 'd3';
+import { callLifecycleHooksChildrenFirst } from '@angular/core/src/view/provider';
 
 @Component({
   selector: 'app-graphic',
@@ -8,13 +9,23 @@ import * as d3 from 'd3';
 })
 export class GraphicComponent implements OnInit {
 
+  radius = 10;
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  ngAfterContentInit() {
-    d3.select('p').style('color', 'red');
+  clicked(event : any) {
+    d3.select(event.target).
+    append('circle')
+    .attr('cx',event.x)
+    .attr('cy',event.y)
+    .attr('r',() => {
+      return this.radius;
+    })
+    .attr('fill', 'white');
   }
   
+
 }
