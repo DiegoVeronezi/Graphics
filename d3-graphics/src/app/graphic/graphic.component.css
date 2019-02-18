@@ -1,3 +1,9 @@
-.mySvg{
-    background-color: #1eb0bb;
+* {
+    font-family: Arial, Helvetica, sans-serif;
 }
+.graph {
+    width: auto;
+    height: auto;
+}
+
+
